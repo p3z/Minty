@@ -1,6 +1,6 @@
 function initGrid(){
-    buildGrid(64);
-    
+    //buildPixelGrid(64);
+    buildRow(3);
 
     // Paint the rendered div with the data from the image
     var pixels = Array.from(document.querySelectorAll('.pixel')); // An array of literally every pixel in ascending order

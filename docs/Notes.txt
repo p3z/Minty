@@ -1,0 +1,12 @@
+1. Auto generate a canvas with randomly generated colors (to remfamiliarise yourself with a number of concepts) -- complete
+2. Build an off-canvas representation of the target image -- complete
+3. Build a meta model of that image representing colors
+4. Add a button that randomly selects the colours and amends the squares of the grid with those colours
+5. Add an array that captures the new model generated 
+6. Check the array for uniqueness (do this between each generation), remove any not unique
+7. Have the button run a function that does all this stuff as many times as there are places in the array (set a max)
+8. Capture a screenshot of each randomly generated visual model
+9. Add these as a collection and mint them on an nft platform
+10. See what happens (worst case scenario, it's just another a portfolio project)
+
+// URL: https://shaypottle.com/wp-content/uploads/2021/08/Pez-px-1.png

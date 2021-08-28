@@ -5,7 +5,7 @@ function buildPixel(color){
     div.style.background = color;
 
     return div;
-} // end build canvas
+} // end build pixel
 
  
 
@@ -16,7 +16,7 @@ function buildRow(size){
         var row = document.createElement("div");
         row.classList.add("row");
         row.setAttribute("data-id", i)
-        canvas.appendChild(row);
+        container.appendChild(row);
     }
 
     paintRow(size);
@@ -34,7 +34,7 @@ function paintRow(size){
 
         })
 
-        console.log(thisRow)
+        //console.log(thisRow)
         
     }
     

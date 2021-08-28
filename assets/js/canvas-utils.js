@@ -4,7 +4,7 @@
 //
 //  pixelRowsToArr:  Takes an image object, returns an array of color values (each one representing rgba format)
 //  onePixelDiv: takes a color, returns a div (to represent a pixel)
-//  buildPixelGrid: Loops through a div row and colours it in (literally attaches a a 'pixel' div to a 'row' div)
+//  addPixels: Loops through a div row and colours it in (literally attaches a a 'pixel' div to a 'row' div)
 //  buildRows: Builds a row with divs as pixels (according to GRID_SIZE). These are all attached to the container element.
 //  createRow
 //  getOnePixel
@@ -18,29 +18,31 @@ function pixelRowsToArr(data){
  } // end function
 
 
-function onePixelDiv(){
+function onePixelDiv(color){
    
     var div = document.createElement("div");
     div.classList.add("pixel"); // Give it 'pixel' properties
-    //div.style.background = color; // Give it the passed in color
+    div.style.background = color; // Give it the passed in color
 
     return div;
 } // end function
 
-function buildPixelGrid(){
+function addPixels(color){
 
-    // Add as many pixels as specified by GRID_SIZE
+    // Add as many pixels as specified by GRID_SIZE to the row, and likewise rows according to GRID_SIZE
     for(var i = 0; i  < GRID_SIZE; i++){
+
         var thisRow = document.querySelector(`[data-id = '${i}'`);
 
-        // Paint the individual pixels
-        repeatIt(GRID_SIZE, function(){
-            var pixel = onePixelDiv();
+        // Add the individual pixels
+        repeatIt(GRID_SIZE, function(c = color){
+    
+            var pixel = onePixelDiv(c);
             thisRow.appendChild(pixel);
 
-        })
+        }) // end repeatIt
         
-    }
+    } // end loop
 } // end function
 
 function buildRows(){

@@ -30,7 +30,6 @@ function scanRow(coordY){
 // Is used to read to grab the base image's pixel data
 function scanImg(){
     
-    
     for(var j = 0; j < GRID_SIZE; j++){ // Loop through rows
 
         var rowData = []; // Use this to capture an entire row's pixel data
@@ -44,5 +43,5 @@ function scanImg(){
         pixelRows.push(rowData); // Capture this entire row into the overarching array
     } // end outer loop
     
-    
+    return pixelRows;
 } // end function

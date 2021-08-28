@@ -1,26 +1,40 @@
 function initGrid(){
 
-    buildRows(); // Build the rows
-    buildPixelGrid(); // Prepare the grid
-    var pixelContainers = Array.from(document.querySelectorAll('.pixel')); // Grab the 'pixels'
+    // Grab the data first (ensure it only updates the array once we've got it)
+    scanImg(64).onload = function(){
+        
+        var imgColorList = pixelRows.flat();
+        //console.log(imgColorList)
+    }()
+
+    buildRows(); // Build all rows
+    addPixels("blue"); // Add pixels to them
+
+    
+
+
+    var pixelContainers = Array.from(document.getElementsByClassName('pixel')); // Grab the newly built 'pixels'
     var pxContainerList = pixelContainers.flat(); // Flatten into a list
     
     // Now paint the rendered div with the data from the image
-
-    // Grab the data first
-    scanImg(64); // Scan the image
-    var imgPixelList = pixelRows.flat();
+    
     
     pxContainerList.forEach(function(px, i){ 
 
-        var thisPixel = pixelContainers[i];
-        var color = `rbg(${imgPixelList[i]})`;
+        var thisPixel = pxContainerList[i];
+       // var color = `rbg(${imgColorList[i]})`;
         
-        thisPixel.style.background = color + " !important";
+       // pxContainerList[i].style.background = color + " !important"; // Don't think this is working because it's references not the actualy elements we're trying to update
+
         
     });
     
+}// end function
+
+window.addEventListener('DOMContentLoaded', () => {
+    
+});
+
+window.onload = function(){
+    initGrid();
 }
-
-
-window.onload = initGrid();

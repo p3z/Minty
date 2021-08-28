@@ -18,11 +18,11 @@ function pixelRowsToArr(data){
  } // end function
 
 
-function onePixelDiv(color){
+function onePixelDiv(){
    
     var div = document.createElement("div");
     div.classList.add("pixel"); // Give it 'pixel' properties
-    div.style.background = color; // Give it the passed in color
+    //div.style.background = color; // Give it the passed in color
 
     return div;
 } // end function
@@ -35,7 +35,7 @@ function buildPixelGrid(){
 
         // Paint the individual pixels
         repeatIt(GRID_SIZE, function(){
-            var pixel = onePixelDiv("blue");
+            var pixel = onePixelDiv();
             thisRow.appendChild(pixel);
 
         })

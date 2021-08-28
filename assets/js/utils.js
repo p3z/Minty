@@ -14,10 +14,10 @@
 
 
 // Returns an rgb color as a string
-function buildColor(){
-    var one = getRandomInt(0, 255);
-    var two = getRandomInt(0, 255);
-    var three = getRandomInt(0, 255);
+// function buildColor(){
+//     var one = getRandomInt(0, 255);
+//     var two = getRandomInt(0, 255);
+//     var three = getRandomInt(0, 255);
     
-    return `rgb(${one}, ${two}, ${three})`;
-}
+//     return `rgb(${one}, ${two}, ${three})`;
+// }

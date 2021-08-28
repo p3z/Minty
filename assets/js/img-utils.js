@@ -21,6 +21,7 @@ function scanRow(coordY){
 
         // Build an array of data for each row
         pixelData = pixelRowsToArr(getPixelData(img, coordX, coordY));
+        pixelData.pop(); // Remove the alpha channel
         return pixelData;
     
     } // end for
@@ -43,7 +44,5 @@ function scanImg(){
         pixelRows.push(rowData); // Capture this entire row into the overarching array
     } // end outer loop
     
-    
-    initGrid();
     
 } // end function

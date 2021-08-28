@@ -1,27 +1,26 @@
 function initGrid(){
+
+    buildRows(); // Build the rows
+    buildPixelGrid(); // Prepare the grid
+    var pixelContainers = Array.from(document.querySelectorAll('.pixel')); // Grab the 'pixels'
+    var pxContainerList = pixelContainers.flat(); // Flatten into a list
     
-    buildRows();
-    buildPixelGrid();
-
-    // Paint the rendered div with the data from the image
-    var pixels = Array.from(document.querySelectorAll('.pixel')); // An array of literally every pixel in ascending order
-
-    var final = pixelRows.flat(); // An array of all the rows flattened into one
+    // Now paint the rendered div with the data from the image
 
     // Grab the data first
-    final.forEach(function(el, i){ 
-        var thisRow = final[i]; // A row
+    scanImg(64); // Scan the image
+    var imgPixelList = pixelRows.flat();
+    
+    pxContainerList.forEach(function(px, i){ 
+
+        var thisPixel = pixelContainers[i];
+        var color = `rbg(${imgPixelList[i]})`;
         
-        thisRow.forEach(function(pixelData, j){
-            var thisPixel = pixels[j];
-            var color = `rbg(${thisRow[j]})`;
-           
-            thisPixel.style.background = color;
-        })
+        thisPixel.style.background = color + " !important";
         
     });
     
 }
 
 
-window.onload = scanImg(64);
+window.onload = initGrid();

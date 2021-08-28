@@ -4,3 +4,5 @@ var img = document.querySelector("img");
 
 // An overarching array to hold all rows
 var pixelRows = [];
+
+const GRID_SIZE = 64;

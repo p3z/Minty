@@ -1,6 +1,6 @@
 1. Auto generate a canvas with randomly generated colors (to remfamiliarise yourself with a number of concepts) -- complete
 2. Build an off-canvas representation of the target image -- complete
-3. Build a meta model of that image representing colors
+3. Build a meta model of that image representing colors -- complete
 4. Add a button that randomly selects the colours and amends the squares of the grid with those colours
 5. Add an array that captures the new model generated 
 6. Check the array for uniqueness (do this between each generation), remove any not unique

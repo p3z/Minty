@@ -32,3 +32,8 @@ paintThese.forEach(function(el, i){
          func();
      }
  }
+
+ function imgDataToArr(data){
+    // Convert data to a readable array
+    return [data[0], data[1], data[2], data[3]];
+ }

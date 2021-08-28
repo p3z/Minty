@@ -1,3 +1,5 @@
+var canvas = document.querySelector(".container");
+
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
  * The value is no lower than min (or the next integer greater than min
@@ -33,3 +35,9 @@ paintThese.forEach(function(el, i){
     el.style.background = colors[thisColor];
 
  })
+
+ function repeatIt(num, func){
+     for(var i = 0; i < num; i++){
+         func();
+     }
+ }

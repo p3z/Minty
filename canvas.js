@@ -55,7 +55,7 @@ function readRow(rowId, totalSize){
     for(var i = 0; i < totalSize; i++){     
 
         // Build an array of data for each row
-        pixelData = imgDataToArr(getOnePixel(img, i, rowId));
+        pixelData = pixelRowsToArr(getOnePixel(img, i, rowId));
 
         return pixelData;
 
@@ -75,11 +75,35 @@ function readImg(size){
             var pixel = readRow(i, 64); 
             rowData.push(pixel);
         }
-        imgData.push(rowData);
+        pixelRows.push(rowData);
     }
     
-    console.log(imgData);
+    
+    initGrid();
     
 } // end function
+
+function initGrid(){
+
+    // Paint the rendered div with the data from the image
+    var pixels = Array.from(document.querySelectorAll('.pixel')); // An array of literally every pixel in ascending order
+
+    var final = pixelRows.flat(); // An array of all the rows flattened into one
+
+    // Grab the data first
+    final.forEach(function(el, i){ 
+        var thisRow = final[i]; // A row
+        
+        thisRow.forEach(function(pixelData, j){
+            var thisPixel = pixels[j];
+            var color = `rbg(${thisRow[0]})`;
+           // console.log(color)
+            thisPixel.style.background = color;
+        })
+        // el.style.background = color;
+    });
+    
+}
+
 
 window.onload = readImg(64);

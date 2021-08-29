@@ -148,21 +148,19 @@ modBtn.addEventListener("click", function(){
     var pixels = divCanvasData.divs; // Literally every 'pixel' in the 'canvas'
 
 
-  console.log(getColorByFreq(countCatalog, 0)) // the most frequent
-   
-   
+    var mostFrequent = getColorByFreq(countCatalog, 0); // the most frequent
     
-
-    // Get the pixels with the highest count -- this is the background
-    //var background = Object.
        
     // Get all pixels with a specific colour
     for(var i = 0; i < pixels.length; i++){
-        //pixels[i].style.background = "red";
+        //
         var thisPixelColor = pixels[i].style.background;
+        var spacesRemoved = thisPixelColor.replace(/\s/g, "");
         
         // Find the pixels with the most background
-      // if(thisPixelColor ==)
+       if(spacesRemoved == mostFrequent){
+           pixels[i].style.background = buildColor();
+       }
 
      
         

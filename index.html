@@ -4,19 +4,25 @@
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <button class="btn" id="init">Start it up</button>
-        <button class="btn hide" id="mod">Change it up</button>
-        <div class="container"></div>
+        <div class="controls">
+            <button class="btn" id="init">Start it up</button>
+            <button class="btn hide" id="mod">Change it up</button>
+            <form class="hide" action="#">
+                <input type="text" id="user-image">
+                <button type="submit" id="save-user-image">Submit</button>
+            </form>
+        </div>
+
+        <div class="container"></div>        
         <canvas style = "display: none;" height="64" width = "64"></canvas>
-        <!-- <img src="pez-1.jpg" alt=""> -->
-        <img style="display: none" src="data:image/png;base64,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" />
+        <img style="display: none;" />
        
      
     <script src = "./assets/js/init.js"></script>
     <script src = "./assets/js/utils.js"></script>
     <script src = "./assets/js/canvas-utils.js"></script>
     <script src = "./assets/js/img-utils.js"></script>
-    <script src = "canvas.js"></script>
+    <script src = "index.js"></script>
     </body>
     </body>
 </html>

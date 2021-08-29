@@ -19,10 +19,17 @@ body{
 
 .pixel{
     box-sizing: border-box !important;
-    width: 2px;
-    height: 2px;
+    width: 4px;
+    height: 4px;
+    transition: .3s ease all;
     /* border: 1px solid black; */
     /* border-radius: 5px; */
+}
+
+.pixel:hover{
+  transform: scale(4);
+  transition: .3s ease all;
+  cursor:pointer;
 }
 
 .btn{

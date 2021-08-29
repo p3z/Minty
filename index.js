@@ -56,9 +56,17 @@ function getColorByFreq(obj, position){
     return color;
 }
 
+function getUserImage(e){
+    e.preventDefault();
+    imgStr = userImg.value;
+    img.src = imgStr;
+    build();
+}
+
 initBtn.addEventListener("click", function(){
     console.log("Build started");
-    build();
+    form.classList.remove("hide");
+   // build();
     modBtn.classList.remove("hide");
 })
 
@@ -72,13 +80,14 @@ modBtn.addEventListener("click", function(){
     var freq1 = getColorByFreq(countCatalog, 1); // Most fur
     var freq2 = getColorByFreq(countCatalog, 2); // Outline
     var freq3 = getColorByFreq(countCatalog, 3); // Ears
-    var freq4 = getColorByFreq(countCatalog, 4); // Tie color 1
+    var freq4 = getColorByFreq(countCatalog, 4); // Shadow on right
     var freq5 = getColorByFreq(countCatalog, 5); // Tie color 1
     
     var newBg = buildColor();
     var newFur = buildColor();
     var newOutline = buildColor();
     var newEars = buildColor();
+    var newShadow = buildColor();
     var newTie1 = buildColor();
 
     
@@ -90,7 +99,7 @@ modBtn.addEventListener("click", function(){
         
         // Find the pixels with the most background
        if(spacesRemoved == freq0){
-           pixels[i].style.background = newBg;
+           pixels[i].style.background = buildColor();
        }
        
        if(spacesRemoved == freq1){
@@ -105,8 +114,8 @@ modBtn.addEventListener("click", function(){
         pixels[i].style.background = newEars;
        }
 
-       if(spacesRemoved == freq4){ // Not sure what this is
-        pixels[i].style.background = "red";
+       if(spacesRemoved == freq4){ 
+        pixels[i].style.background = newShadow;
        }
 
        if(spacesRemoved == freq5){
@@ -118,3 +127,6 @@ modBtn.addEventListener("click", function(){
     } // end loop
 
 }); // end function
+
+// Get the user colour
+saveuserImg.addEventListener("click", getUserImage);

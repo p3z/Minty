@@ -1,0 +1,39 @@
+Weekend fun
+
+I had some great fun this weekend with a micro-project revolving around some retro pixel art and modern NFT vibes. For good measure I cranked up a lofi chiptune playlist to ease me into the weekend and get me in the mood for some old school tinkering. And what I built was this:
+
+It's essentially a version 1 proof of concept for pixel art generation. We feed it a base64 image (I suppose it could be anything really but pixel art seems to be all the rage right now), and it translates that image into a series of tesselated div elements all housed within a single container. It also provides an interface for tweaking the image at random to oscilate between different colours.
+
+The purpose? Well I've been reading a lot about the crypto/NFT space lately and heard ridiculuos stories about those who have minted their own NFT collections on some blockchain or another and their being worth a surprising amount. Maybe it's because the space is so new, and everyone wants to be the first, or maybe it's something of a bubble the way 'beanie babies' were back in the day. Hey, maybe it's that blockchain really is (in my humble opinion at least) far more significant and important a technology than many realise, and therefore these first generation pieces of art do genuinely have some sort of intrinsic value as a technological milestone. After all, as simplistic as they may appear at first glance, the value of an artpiece is not found solely in the materials used. If this were the case would not Da Vinci's great masterpiece be only worth the oils and canvas it was crafted on? Ah but I digress...
+
+In any case, I just thought it would be a fun programming challenge and dug a little deeper. A quick perusal revealed that many of these 'one of a kind' collections were simply based around a core image with traits mashed up at random.
+
+Having never worked with images in this way myself, and intrigued by the 'seeming' simplicity, I thought I'd give it a go. The idea has been thus to create a codebase that automatically generates a number of colour palletes for a pixel art image. One could then mint these on a blockchain as a collection, and well see what happens.
+
+Now it's worth pointing out that this is a version 1. As such there are some limitations, being that my focus was on completing a proof of concept rather than refining it as a finished product. But well here we go.
+
+The image used in the demo is that of a plushy dog that we've had for a number of years. I took a photo of it a while back for another project, and turned that into a simplified pixel art image using GIMP image editor. Turning this into a base 64 image using this online tool: https://elmah.io/tools/base64-image-encoder/ I was able to grab an html image tag that would form the foundation of the image.
+
+# File system
+
+index.html is a minimal file containing only typical html boilerplate, 2 buttons, a container div, the image just mentioned, and a canvas element. It also links to a single css file, and a number of scripts housed within the js folder.
+
+The following files have been delegated to the following responsibilities: 
+- init.js: Initialises and attaches a number of key variables to the global scope
+- utils.js: Houses a number of utility functions that could really be used anywhere (even outside this project)
+- canvas-utils.js: Contains functions pertaining to the building of the virtual div 'canvas'
+- img-utils: Contains functions related to the handling of the base 64 image
+- index.js: is the file that starts everything up. It attaches event handlers to the buttons, and also houses a couple of functions that make use of both all the other types of utility functions.
+
+# Logic
+The program awaits a user to hit the start button before it does anything. Once started we run the build function, and reveal the second button by toggling off a utility css class. Without going into the details of every single function, the build function essentially does the following:
+- It scans a base 64 image and grants us access to a multidimensional array of pixel colour information which is then flattened into a single dimension.
+- It builds the html infrastructure by attaching a number of div rows to the container, and also attaches a numbe of div 'pixels' to these. This allows us to manipulate their size, colour, and shape all through JavaScript.
+- We then grab an HTML collection of the newly minted 'pixel' divs.
+- Looping through this collection, we assign the background style property of each 'pixel' div according to the colour information we previously read from the base 64 image. -- This step colours the virtual canvas according to the image.
+- If the user hits the modify button, then we randomly generate some colours, using a utility function, assign these to a number of variables. Using the virtual canvas info we previoulsy saved, we can then work out what each of these colours represent in the image and reassign them a new colour accordingly.
+
+Future versions of this project could see it such that the user can assign arbitrary meanings to different elements enabling more granular control over the colours of particular elements. We could also integrate a UI rather having it rely on hardcoded details as it is presently. And perhaps most interestingly, I found that manipulating some of the CSS properties of each pixel also yielded some interesting results. One could codify these and introduce them to the aforementiond UI... Perhaps adding animation by means of colouring things according to timings...
+
+It's a  pretty cool foundation, definitely something to explore further.
+

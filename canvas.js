@@ -10,20 +10,30 @@ function build(){
     addPixels(); // Add 'pixels' to them
 
     var pixelContainers = document.getElementsByClassName('pixel'); // Grab the newly built 'pixels'
+
+    var countCatalog = {}; // Use this to capture a count of each pixel colour
+    var uniqueColors = []; // Use this to capture every single unique color
         
     // Now paint the rendered 'pixel' div with the color data from the image    
     for(var i = 0; i < pixelContainers.length; i++){
         var thisPixel = pixelContainers[i];
         var color = `rgb(${colorsList[i]})`;
         
-        thisPixel.style.background = color; 
+        thisPixel.style.background = color; // Color it in
+        
+        // Build an array of unique colours
+        if(!uniqueColors.includes(color)){
+            uniqueColors.push(color);
+        } // end if
+            
 
     } // End loop
 
-    var swatch = swatchIt(colorsList, "rgb");
+    console.log(uniqueColors)
+   // var swatch = swatchIt(colorsList, "rgb");
+   // var paintByNumbers = pixelCounter(colorsList, swatch);
+  //  console.log(paintByNumbers);
     
-    console.log("Swatch is")
-    console.log(swatch)
 }// end function
 
 /////////////////////////////////////////////////////////
@@ -88,10 +98,23 @@ function swatchIt(colorArr, type){
 function pixelCounter(pixels, colors){
      var countCatalog = {};
     
-    // Loop through pixels, check the count catalog for an entry if one doesn't exist, create one, otherwise increment it
-    for(var i = 0; i < pixels.length; i++){
+    // // Loop through colors, check the count catalog for an entry if one doesn't exist, create one, otherwise increment it
+    for(var i = 0; i < colors.length; i++){
+
+        pixels.forEach((pixel) => {
+            // Convert pixel to a string for comparison against colors
+            var thisPixel = pixel.toString(); // String of pixel data (actual pixels)
+            if(colors.includes(thisPixel)){
+
+            } // 
+        });
+
         
-    } // end loop
+    } // color loop
+        
+    // } // end loop
+
+    return countCatalog;
 } // end function
 
 

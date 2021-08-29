@@ -20,7 +20,8 @@ function build(){
 
     } // End loop
 
-    swatchIt(colorsList);
+    var swatch = swatchIt(colorsList);
+    
     
 }// end function
 
@@ -33,7 +34,10 @@ function build(){
 function swatchIt(colorArr){
     // Loop through colour array and return a new array of unique colours
     var hexArr = [];
-    var uniqueColors = [];
+    var rgbArr = [];
+    
+    var uniqueHex = [];
+    var uniqueRgb = [];
     // Transform all rgb arrays to strings
     for(var i = 0; i < colorArr.length; i++){
         var thisColor = colorArr[i].toString();
@@ -48,18 +52,41 @@ function swatchIt(colorArr){
 
         var hexIt = rgbToHex(r, g, b);
         hexArr.push(hexIt);
+        
+        rgbArr.push(thisColor);
     }
 
 
 
     hexArr.filter(color => {
-        if(!uniqueColors.includes(color)){
-            uniqueColors.push(color);
-        } // end if    
+        if(!uniqueHex.includes(color)){
+            uniqueHex.push(color);
+        } // end if
+        
     }); // end filter
 
-    console.log(uniqueColors);
-}
+    rgbArr.filter(color => {
+        if(!uniqueRgb.includes(color)){
+            uniqueRgb.push(color);
+        } // end if
+        
+    }); // end filter
+
+    //return uniqueHex;
+    return uniqueRgb;
+} // end function
+
+// Count the individual instances of each color
+// Return these as an object keyed by the color value
+function pixelCounter(pixels, colors){
+     var countCatalog = {};
+    
+    // Loop through pixels, check the count catalog for an entry if one doesn't exist, create one, otherwise increment it
+    for(var i = 0; i < pixels.length; i++){
+        
+    } // end loop
+} // end function
+
 
 btn.addEventListener("click", function(){
     console.log("Build started");

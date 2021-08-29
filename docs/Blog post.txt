@@ -27,13 +27,19 @@ The following files have been delegated to the following responsibilities:
 
 # Logic
 The program awaits a user to hit the start button before it does anything. Once started we run the build function, and reveal the second button by toggling off a utility css class. Without going into the details of every single function, the build function essentially does the following:
-- It scans a base 64 image and grants us access to a multidimensional array of pixel colour information which is then flattened into a single dimension.
-- It builds the html infrastructure by attaching a number of div rows to the container, and also attaches a numbe of div 'pixels' to these. This allows us to manipulate their size, colour, and shape all through JavaScript.
+- It scans a base 64 image and grants us access to a multidimensional array of pixel colour information which is then flattened into a single dimension. (It does this by dragging each individual pixel through the canvas element)
+- It builds the html infrastructure by attaching a number of div rows to the container, and also attaches a number of div 'pixels' to these. This allows us to manipulate their size, colour, and shape all through JavaScript.
 - We then grab an HTML collection of the newly minted 'pixel' divs.
 - Looping through this collection, we assign the background style property of each 'pixel' div according to the colour information we previously read from the base 64 image. -- This step colours the virtual canvas according to the image.
 - If the user hits the modify button, then we randomly generate some colours, using a utility function, assign these to a number of variables. Using the virtual canvas info we previoulsy saved, we can then work out what each of these colours represent in the image and reassign them a new colour accordingly.
 
-Future versions of this project could see it such that the user can assign arbitrary meanings to different elements enabling more granular control over the colours of particular elements. We could also integrate a UI rather having it rely on hardcoded details as it is presently. And perhaps most interestingly, I found that manipulating some of the CSS properties of each pixel also yielded some interesting results. One could codify these and introduce them to the aforementiond UI... Perhaps adding animation by means of colouring things according to timings...
+Going forwards
+Future versions of this project could see it such that the user can assign arbitrary meanings to different elements enabling more granular control over the colours of particular elements. We could also integrate a UI rather having it rely on hardcoded details as it is presently. We could add an array of 'accessories' for the character, applying the same principles of colourisation, and spontaneous generation to each. And perhaps most interestingly, I found that manipulating some of the CSS properties of each pixel also yielded some interesting results. One could codify these and introduce them to the aforementiond UI... Perhaps adding animation by means of colouring things according to timings...
 
-It's a  pretty cool foundation, definitely something to explore further.
+It's a pretty cool foundation, definitely something to explore further but for about a day's playing in all all, I'm actually pretty happy with the results.
 
+[Update]
+Added  a feature to allow the user to pass in a base 64 encoded image as a string rather than reading it off of the html element directly.
+
+[Update 2]
+it dawns on me that the updated images would make a cool base image for a digital 'trading card' of sorts. If I generate some 'templates' that house this image, and tie this to the random name generator I made in project Hodl, I could create a truly unique digital 'collectible'.

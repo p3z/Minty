@@ -39,86 +39,6 @@ function build(){
     
 }// end function
 
-/////////////////////////////////////////////////////////
-//
-//  Morph process
-//
-/////////////////////////////////////////////////////////
-// Separate out the image data into it's unique colors (we'll mod these later)
-// function swatchIt(colorArr, type){
-//     // Loop through colour array and return a new array of unique colours
-//     var hexArr = [];
-//     var rgbArr = [];
-    
-//     var uniqueHex = [];
-//     var uniqueRgb = [];
-//     // Transform all rgb arrays to strings
-//     for(var i = 0; i < colorArr.length; i++){
-//         var thisColor = colorArr[i].toString();
-
-//         // Translate them to hex for ease of comparison
-//         //Break it up
-//         var rgb = thisColor.split(",");
-
-//         var r = parseInt(rgb[0]);
-//         var g = parseInt(rgb[1]);
-//         var b = parseInt(rgb[2]);
-
-//         var hexIt = rgbToHex(r, g, b);
-//         hexArr.push(hexIt);
-        
-//         rgbArr.push(thisColor);
-//     }
-
-
-//     switch(type){
-//         case "hex":
-//             hexArr.filter(color => {
-//                 if(!uniqueHex.includes(color)){
-//                     uniqueHex.push(color);
-//                 } // end if
-                
-//             }); // end filter
-
-//             return uniqueHex;
-//             break;
-
-//         case "rgb":
-//             rgbArr.filter(color => {
-//                 if(!uniqueRgb.includes(color)){
-//                     uniqueRgb.push(color);
-//                 } // end if
-                
-//             }); // end filter
-//             return uniqueRgb;
-//             break;
-//     } // end switch
-    
-// } // end function
-
-// Count the individual instances of each color
-// Return these as an object keyed by the color value
-// function pixelCounter(pixels, colors){
-//      var countCatalog = {};
-    
-//     // // Loop through colors, check the count catalog for an entry if one doesn't exist, create one, otherwise increment it
-//     for(var i = 0; i < colors.length; i++){
-
-//         pixels.forEach((pixel) => {
-//             // Convert pixel to a string for comparison against colors
-//             var thisPixel = pixel.toString(); // String of pixel data (actual pixels)
-//             if(colors.includes(thisPixel)){
-
-//             } // 
-//         });
-
-        
-//     } // color loop
-        
-//     // } // end loop
-
-//     return countCatalog;
-// } // end function
 
 function getColorByFreq(obj, position){
 
@@ -144,13 +64,24 @@ initBtn.addEventListener("click", function(){
 
 // Change the colours
 modBtn.addEventListener("click", function(){
-    
+    console.log("Change registered");
     var pixels = divCanvasData.divs; // Literally every 'pixel' in the 'canvas'
 
 
-    var mostFrequent = getColorByFreq(countCatalog, 0); // the most frequent
+    var freq0 = getColorByFreq(countCatalog, 0); // Bg
+    var freq1 = getColorByFreq(countCatalog, 1); // Most fur
+    var freq2 = getColorByFreq(countCatalog, 2); // Outline
+    var freq3 = getColorByFreq(countCatalog, 3); // Ears
+    var freq4 = getColorByFreq(countCatalog, 4); // Tie color 1
+    var freq5 = getColorByFreq(countCatalog, 5); // Tie color 1
     
-       
+    var newBg = buildColor();
+    var newFur = buildColor();
+    var newOutline = buildColor();
+    var newEars = buildColor();
+    var newTie1 = buildColor();
+
+    
     // Get all pixels with a specific colour
     for(var i = 0; i < pixels.length; i++){
         //
@@ -158,11 +89,29 @@ modBtn.addEventListener("click", function(){
         var spacesRemoved = thisPixelColor.replace(/\s/g, "");
         
         // Find the pixels with the most background
-       if(spacesRemoved == mostFrequent){
-           pixels[i].style.background = buildColor();
+       if(spacesRemoved == freq0){
+           pixels[i].style.background = newBg;
+       }
+       
+       if(spacesRemoved == freq1){
+        pixels[i].style.background = newFur;
        }
 
-     
+       if(spacesRemoved == freq2){
+        //pixels[i].style.background = newOutline;
+       }
+
+       if(spacesRemoved == freq3){
+        pixels[i].style.background = newEars;
+       }
+
+       if(spacesRemoved == freq4){ // Not sure what this is
+        pixels[i].style.background = "red";
+       }
+
+       if(spacesRemoved == freq5){
+        pixels[i].style.background = newTie1;
+       }
         
         
 

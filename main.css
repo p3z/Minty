@@ -19,8 +19,8 @@ body{
 
 .pixel{
     box-sizing: border-box !important;
-    width: 5px;
-    height: 5px;
+    width: 2px;
+    height: 2px;
     /* border: 1px solid black; */
     /* border-radius: 5px; */
 }

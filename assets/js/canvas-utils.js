@@ -28,6 +28,7 @@ function onePixelDiv(color){
    
     var div = document.createElement("div");
     div.classList.add("pixel"); // Give it 'pixel' properties
+    // div.classList.add("rotate-center")
     div.style.background = color; // Give it the passed in color
 
     return div;

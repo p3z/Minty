@@ -11,8 +11,8 @@ function build(){
 
     var pixelContainers = document.getElementsByClassName('pixel'); // Grab the newly built 'pixels'
 
-    var countCatalog = {}; // Use this to capture a count of each pixel colour
-    var uniqueColors = []; // Use this to capture every single unique color
+    
+    var uniqueColors = []; // Use this to capture every single unique color (We don't actually use this presently)
         
     // Now paint the rendered 'pixel' div with the color data from the image    
     for(var i = 0; i < pixelContainers.length; i++){
@@ -35,10 +35,7 @@ function build(){
 
     } // End loop
 
-    console.log(countCatalog)
-   // var swatch = swatchIt(colorsList, "rgb");
-   // var paintByNumbers = pixelCounter(colorsList, swatch);
-  //  console.log(paintByNumbers);
+    divCanvasData.divs = pixelContainers;
     
 }// end function
 
@@ -123,8 +120,54 @@ function build(){
 //     return countCatalog;
 // } // end function
 
+function getColorByFreq(obj, position){
 
-btn.addEventListener("click", function(){
+    var sorted = Object.values(obj).sort(function(a, b){return a - b}).reverse(); // All the values of countCatalog in descending order
+
+    var color;
+    
+
+    Object.keys(obj).some(function(k) {
+        if(obj[k] === sorted[position]){
+            color =  k;
+        }
+        
+    });
+    return color;
+}
+
+initBtn.addEventListener("click", function(){
     console.log("Build started");
     build();
+    modBtn.classList.remove("hide");
 })
+
+// Change the colours
+modBtn.addEventListener("click", function(){
+    
+    var pixels = divCanvasData.divs; // Literally every 'pixel' in the 'canvas'
+
+
+  console.log(getColorByFreq(countCatalog, 0)) // the most frequent
+   
+   
+    
+
+    // Get the pixels with the highest count -- this is the background
+    //var background = Object.
+       
+    // Get all pixels with a specific colour
+    for(var i = 0; i < pixels.length; i++){
+        //pixels[i].style.background = "red";
+        var thisPixelColor = pixels[i].style.background;
+        
+        // Find the pixels with the most background
+      // if(thisPixelColor ==)
+
+     
+        
+        
+
+    } // end loop
+
+}); // end function

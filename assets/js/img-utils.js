@@ -16,32 +16,38 @@ function getPixelData(img, x, y) {
 
 // Is used inside scanImg (never called manually)
 function scanRow(coordY){
-    
-    for(var coordX = 0; coordX < GRID_SIZE; coordX++){     
+    var pixelsInRow = [];
 
-        // Build an array of data for each row
-        pixelData = pixelRowsToArr(getPixelData(img, coordX, coordY));
+    for(var coordX = 0; coordX < GRID_SIZE; coordX++){     
+        
+        // Grab one pixel's data and put it into row array
+        var pixelData = pixelRowsToArr(getPixelData(img, coordX, coordY)); // A single pixel color as an array
         pixelData.pop(); // Remove the alpha channel
-        return pixelData;
+        
+        pixelsInRow.push(pixelData);
     
     } // end for
+    
+    return pixelsInRow; // An entire row's array (contains arrays of color values)
 } // end function
 
 // Is used to read to grab the base image's pixel data
 function scanImg(){
     
-    for(var j = 0; j < GRID_SIZE; j++){ // Loop through rows
-
-        var rowData = []; // Use this to capture an entire row's pixel data
-       
-        // Read the row and capture it in array
-        for(var i = 0; i < GRID_SIZE; i++){
-            var pixel = scanRow(i, 64); // Here 'i' is the Y value (x is set inside scanRow)
-            rowData.push(pixel);
-        } // end inner loop
-
-        pixelRows.push(rowData); // Capture this entire row into the overarching array
-    } // end outer loop
+    var rowData = []; // Use this to capture an entire row's pixel data
     
-    return pixelRows;
+    // Read the row and capture it in array
+    for(var i = 0; i < GRID_SIZE; i++){
+        
+        var row = scanRow(i);  // Here 'i' is the Y value (x is set inside scanRow)
+        rowData.push(row);
+
+    } // end loop
+
+    //pixelRows.push(rowData); // Capture this entire row into the overarching array
+    
+    
+    
+    //return pixelRows;
+    return rowData;
 } // end function

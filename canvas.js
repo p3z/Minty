@@ -1,33 +1,23 @@
 function initGrid(){
 
     // Grab the data first (ensure it only updates the array once we've got it)
-    scanImg(64).onload = function(){
-        
-        var imgColorList = pixelRows.flat();
-        //console.log(imgColorList)
-    }()
+    var scannedImg = scanImg(64);
+    var pixelsList = [].concat(...scannedImg);
 
     buildRows(); // Build all rows
-    addPixels("blue"); // Add pixels to them
+    addPixels(); // Add pixels to them
 
+    var pixelContainers = document.getElementsByClassName('pixel'); // Grab the newly built 'pixels'
+    // pixelContainers[50].style.background = "red"; // This works as you'd expect
     
-
-
-    var pixelContainers = Array.from(document.getElementsByClassName('pixel')); // Grab the newly built 'pixels'
-    var pxContainerList = pixelContainers.flat(); // Flatten into a list
-    
-    // Now paint the rendered div with the data from the image
-    
-    
-    pxContainerList.forEach(function(px, i){ 
-
-        var thisPixel = pxContainerList[i];
-       // var color = `rbg(${imgColorList[i]})`;
+    // Now paint the rendered div with the data from the image    
+    for(var i = 0; i < pixelContainers.length; i++){
+        var thisPixel = pixelContainers[i];
+        var color = `rgb(${pixelsList[i]})`;
         
-       // pxContainerList[i].style.background = color + " !important"; // Don't think this is working because it's references not the actualy elements we're trying to update
+        thisPixel.style.background = color; 
 
-        
-    });
+    } // End loop
     
 }// end function
 
@@ -36,5 +26,10 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 window.onload = function(){
-    initGrid();
+   
 }
+
+btn.addEventListener("click", function(){
+    console.log("Button pressed");
+    initGrid();
+})

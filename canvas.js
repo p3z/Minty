@@ -20,9 +20,10 @@ function build(){
 
     } // End loop
 
-    var swatch = swatchIt(colorsList);
+    var swatch = swatchIt(colorsList, "rgb");
     
-    
+    console.log("Swatch is")
+    console.log(swatch)
 }// end function
 
 /////////////////////////////////////////////////////////
@@ -31,7 +32,7 @@ function build(){
 //
 /////////////////////////////////////////////////////////
 // Separate out the image data into it's unique colors (we'll mod these later)
-function swatchIt(colorArr){
+function swatchIt(colorArr, type){
     // Loop through colour array and return a new array of unique colours
     var hexArr = [];
     var rgbArr = [];
@@ -57,23 +58,29 @@ function swatchIt(colorArr){
     }
 
 
+    switch(type){
+        case "hex":
+            hexArr.filter(color => {
+                if(!uniqueHex.includes(color)){
+                    uniqueHex.push(color);
+                } // end if
+                
+            }); // end filter
 
-    hexArr.filter(color => {
-        if(!uniqueHex.includes(color)){
-            uniqueHex.push(color);
-        } // end if
-        
-    }); // end filter
+            return uniqueHex;
+            break;
 
-    rgbArr.filter(color => {
-        if(!uniqueRgb.includes(color)){
-            uniqueRgb.push(color);
-        } // end if
-        
-    }); // end filter
-
-    //return uniqueHex;
-    return uniqueRgb;
+        case "rgb":
+            rgbArr.filter(color => {
+                if(!uniqueRgb.includes(color)){
+                    uniqueRgb.push(color);
+                } // end if
+                
+            }); // end filter
+            return uniqueRgb;
+            break;
+    } // end switch
+    
 } // end function
 
 // Count the individual instances of each color

@@ -25,6 +25,7 @@ body{
 }
 
 #init{
+    cursor: pointer;
     border-radius: 5px;
     display: fixed;
     top: 20px;

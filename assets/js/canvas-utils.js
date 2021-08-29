@@ -12,6 +12,12 @@
 //  readImg
 ////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////
+//
+//  Build process
+//
+/////////////////////////////////////////////////////////
+
 function pixelRowsToArr(data){
     // Convert data to a readable array
     return [data[0], data[1], data[2], data[3]];
@@ -56,3 +62,4 @@ function buildRows(){
     } // end loop
 
 } // end function
+

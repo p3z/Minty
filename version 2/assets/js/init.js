@@ -6,6 +6,7 @@ var resetCanvasBtn = document.querySelector("#reset-canvas-btn");
 
 var shapeChoice = document.querySelector("#shape-choice");
 var shapeSize = document.querySelector("#shape-size");
+var shapeColor = document.querySelector("#shape-color");
 
 var elements = [
     "div",

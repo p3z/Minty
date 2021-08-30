@@ -7,9 +7,11 @@ function buildHTMLelement(element, type){
         if (elements[i] == element){
 
             var el = document.createElement(element);
-            el.style.background = "red";
-            el.classList.add(type)
-            console.log("Class was " + type)
+            var size = shapeSize.value * 3;
+            el.style.background = shapeColor.value;
+            el.style.width = size + "px";
+            el.style.height = size + "px";
+            el.classList.add(type) // Adds shape properties
             
             virtualCanvas.appendChild(el);
         } // end if

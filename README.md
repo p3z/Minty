@@ -1,1 +1,3 @@
-# nft-asset-builder
+# Minty: An NFT asset builder
+
+

@@ -3,13 +3,10 @@ UIsubmit.addEventListener("click", function(e){
 
     // Depending on the input chosen, select an appropriate html element
     var userChoice = shapeChoice.value;
+    buildHTMLelement("div", userChoice);
 
-    switch(userChoice){
-        case "circle":
-        case "square":
-            buildHTMLelement("div");
-        
-    }// end switch
 
     
 });
+
+resetCanvasBtn.addEventListener("click", resetCanvas)

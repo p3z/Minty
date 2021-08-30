@@ -1,15 +1,26 @@
-function buildHTMLelement(element){
-    var el = document.createElement(element);
+function buildHTMLelement(element, type){
+    // 
     
-    // Ensure el is actuall an accepted type of element
-    if(elements.includes(element)){
-        console.log("An element fond");
-    } else{
-        console.log("Not an element")
-    }
+    // Ensure element is actually an accepted type of element
+    for(var i = 0; i < elements.length; i++){
 
-}
+        if (elements[i] == element){
 
-function buildSqaure(num){
+            var el = document.createElement(element);
+            el.style.background = "red";
+            el.classList.add(type)
+            console.log("Class was " + type)
+            
+            virtualCanvas.appendChild(el);
+        } // end if
+        
+    } // end loop
+        
+
     
+
+} // end function
+
+function resetCanvas(){
+    virtualCanvas.innerHTML = "";
 }

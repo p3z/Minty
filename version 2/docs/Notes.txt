@@ -1,0 +1,5 @@
+Version 2 approach
+
+- Instead of 'pixel for pixel', this time think instead, 'shape for shape'
+- Create an interface for adding predefined 'shapes' to a virtual canvas. You can then layer these shapes to create all sorts of things. Adding a drag/drop interface too can make it truly user friendly.
+- Combine this w/ version 1 and see what you have.

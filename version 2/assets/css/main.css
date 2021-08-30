@@ -1,7 +1,11 @@
-.container{
-    height: 300px;
-    width: 300px;
-    background: red;
+.virtual-canvas-container{
+    height: 600px;
+    width: 600px;
+    border: 4px solid black;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 .square{
